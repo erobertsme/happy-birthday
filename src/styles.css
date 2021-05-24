@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(101, 115, 255),
+    rgb(111, 114, 247),
+    rgb(120, 114, 239),
+    rgb(130, 113, 231),
+    rgb(139, 112, 223),
+    rgb(149, 111, 215),
+    rgb(158, 111, 208),
+    rgb(168, 110, 200),
+    rgb(177, 109, 192),
+    rgb(187, 108, 184),
+    rgb(196, 108, 176),
+    rgb(206, 107, 168)
+  );
+  height: 100vh;
+  width: 100vw;
+}
+.wrapper {
+  position: absolute;
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.happy {
+  color: white;
+  font-size: 5rem;
+  text-shadow: 0px 0px 6px hsl(32, 100%, 55%);
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Pacifico', cursive;
+  padding: 1.2em;
+  background: hsla(0, 0%, 100%, 0.25);
+  box-shadow: 0 8px 32px 0 hsla(236, 63%, 33%, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid hsla(0, 0%, 100%, 0.08);
+  transition: all 200ms;
+  cursor: pointer;
+}
+.happy:hover {
+  background: hsla(0, 0%, 100%, 0.5);
+}
+.happy:focus {
+  outline: none;
+}
+.cake {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 5rem;
+  margin-top: 1rem;
+}
+.wrapper > div span {
+  pointer-events: none;
+}
