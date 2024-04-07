@@ -46,7 +46,7 @@ export default class App extends React.Component {
     // Reset after 3
     if (this.state.count > 3) {
       // Special bonus
-      window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      window.open('https://trustmethisisnotascam.com', '_blank');
 
       this.setState({count: 0})
       return
