@@ -1,0 +1,9 @@
+{
+    "name": "Birthday Surprise",
+    "short_name": "Birthday Surprise",
+    "description": "Happy Birthday message with a surprise",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#6F72F7",
+    "background_color": "#6F72F7"
+}
