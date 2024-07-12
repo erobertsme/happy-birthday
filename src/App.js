@@ -1,78 +1,83 @@
-import "./styles.css";
-import React from 'react';
-import Reward from "react-rewards";
+import './styles.css';
+import React, { useState, useEffect, useRef } from 'react';
+import { useReward } from 'react-rewards';
 
 const config = {
-  emoji: ['🎈', '🎊', '🎉', '🎁', '⭐'],
-  elementCount: 100,
-  spread: 150,
-  zIndex: 9999,
-  lifetime: 300
+	emoji: ['🎈', '🎊', '🎉', '🎁', '⭐'],
+	elementCount: 100,
+	spread: 150,
+	zIndex: 9999,
+	lifetime: 300,
 };
 
-// Make non 🎈 emoji more rare
+// Make non-🎈 emoji more rare
 for (let i = 0; i < 25; i++) {
-  config.emoji.push('🎈')
+	config.emoji.push('🎈');
 }
 
-export default class App extends React.Component {
+const App = () => {
+	const [count, setCount] = useState(0);
+	const [cakes, setCakes] = useState([]);
+    const [name, setName] = useState('');
+	const { reward } = useReward('rewardId', 'emoji', config);
+    const h2Ref = useRef(null);
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      count: 0,
-      cakes: []
-    }
-  }
+	useEffect(() => {
+		reward();
+		addCake();
+    
+        const getQueryParam = (name) => {
+			const urlParams = new URLSearchParams(window.location.search);
+			return urlParams.get(name);
+		};
 
-  componentDidMount() {
-    this.reward.rewardMe()
-    this.addCake()
-  }
+		const queryParamName = getQueryParam('name');
+		if (queryParamName) {
+			setName(queryParamName);
+		}
+	}, []);
 
-  addCake = () => {
-    this.setState(prevState => {
-      return {cakes: ['🎂', ...prevState.cakes]}
-    })
-  }
+	useEffect(() => {
+		if (count > 0) {
+			h2Ref.current.classList.add('bounce');
+			setTimeout(() => {
+				h2Ref.current.classList.remove('bounce');
+			}, 1000);
+		}
+	}, [count]);
 
-  increaseCount = () => {
-    this.setState(prevState => {
-      return {count: prevState.count + 1}
-    })
-  }
+	const addCake = () => {
+		setCakes((prevCakes) => ['🎂', ...prevCakes]);
+	};
 
-  handleClick = () => {
-    // Reset after 3
-    if (this.state.count > 3) {
-      // Special bonus
-      window.open('https://trustmethisisnotascam.com', '_blank');
+	const increaseCount = () => {
+		setCount((prevCount) => prevCount + 1);
+	};
 
-      this.setState({count: 0})
-      return
-    }
+	const handleClick = () => {
+		if (count > 3) {
+			window.open('https://trustmethisisnotascam.com', '_blank');
+			setCount(0);
+			return;
+		}
 
-    // Blast Confetti
-    this.reward.rewardMe()
+		reward();
+		addCake();
+		increaseCount();
+	};
 
-    this.addCake()
-    this.increaseCount()
-  }
+	return (
+		<div className="wrapper">
+			<div className="reward-container">
+				<button className="happy" onClick={handleClick} id="rewardId">
+					Happy Birthday
+					{name && <><br/>{name}</>}
+				</button>
+				<h2 ref={h2Ref}>{count < 1 ? 'Click the button!' : 'Keep Going!'}</h2>
+				<div className="cake">{cakes.join('')}</div>
+			</div>
+		</div>
+	);
+};
 
-  render() {
-    return (
-      <div className="wrapper">
-        <Reward
-          ref={ref => this.reward = ref}
-          type="emoji"
-          config={config}
-        >
-          <button className="happy" onClick={this.handleClick}>
-            Happy Birthday!
-          </button>
-          <div className="cake">{this.state.cakes.join('')}</div>
-        </Reward>
-      </div>
-    );
-  }
-}
+export default App;
