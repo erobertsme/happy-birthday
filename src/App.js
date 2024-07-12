@@ -2,6 +2,9 @@ import './styles.css';
 import React, { useState, useEffect, useRef } from 'react';
 import { useReward } from 'react-rewards';
 
+const url = 'aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t';
+const totalClicks = 5;
+
 const config = {
 	emoji: ['🎈', '🎊', '🎉', '🎁', '⭐'],
 	elementCount: 100,
@@ -15,7 +18,6 @@ for (let i = 0; i < 25; i++) {
 	config.emoji.push('🎈');
 }
 
-const url = 'aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t';
 
 const App = () => {
 	const [count, setCount] = useState(0);
@@ -25,7 +27,6 @@ const App = () => {
     const h2Ref = useRef(null);
 
 	useEffect(() => {
-		reward();
 		addCake();
     
         const getQueryParam = (name) => {
@@ -40,7 +41,7 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		if (count > 0) {
+		if (count > 1) {
 			h2Ref.current.classList.add('bounce');
 			setTimeout(() => {
 				h2Ref.current.classList.remove('bounce');
@@ -50,6 +51,8 @@ const App = () => {
 
 	const addCake = () => {
 		setCakes((prevCakes) => ['🎂', ...prevCakes]);
+        increaseCount();
+        reward();
 	};
 
 	const increaseCount = () => {
@@ -57,15 +60,13 @@ const App = () => {
 	};
 
 	const handleClick = () => {
-		if (count > 3) {
+		if (count > totalClicks - 1) {
 			window.open(atob(url), '_blank');
 			setCount(0);
 			return;
 		}
 
-		reward();
-		addCake();
-		increaseCount();
+        addCake();
 	};
 
 	return (
@@ -75,7 +76,7 @@ const App = () => {
 					Happy Birthday
 					{name && <><br/>{name}</>}
 				</button>
-				<h2 ref={h2Ref}>{count < 1 ? 'Click the button!' : 'Keep Going!'}</h2>
+				<h2 ref={h2Ref}>{count < 2 ? 'Click the button!' : 'Keep Going!'}</h2>
 				<div className="cake">{cakes.join('')}</div>
 			</div>
 		</div>
