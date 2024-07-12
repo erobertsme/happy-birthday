@@ -15,6 +15,8 @@ for (let i = 0; i < 25; i++) {
 	config.emoji.push('🎈');
 }
 
+const url = 'aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t';
+
 const App = () => {
 	const [count, setCount] = useState(0);
 	const [cakes, setCakes] = useState([]);
@@ -56,7 +58,7 @@ const App = () => {
 
 	const handleClick = () => {
 		if (count > 3) {
-			window.open('https://trustmethisisnotascam.com', '_blank');
+			window.open(atob(url), '_blank');
 			setCount(0);
 			return;
 		}
