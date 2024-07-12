@@ -18,18 +18,17 @@ for (let i = 0; i < 25; i++) {
 	config.emoji.push('🎈');
 }
 
-
 const App = () => {
 	const [count, setCount] = useState(0);
 	const [cakes, setCakes] = useState([]);
-    const [name, setName] = useState('');
+	const [name, setName] = useState('');
 	const { reward } = useReward('rewardId', 'emoji', config);
-    const h2Ref = useRef(null);
+	const h2Ref = useRef(null);
 
 	useEffect(() => {
 		addCake();
-    
-        const getQueryParam = (name) => {
+
+		const getQueryParam = (name) => {
 			const urlParams = new URLSearchParams(window.location.search);
 			return urlParams.get(name);
 		};
@@ -51,8 +50,8 @@ const App = () => {
 
 	const addCake = () => {
 		setCakes((prevCakes) => ['🎂', ...prevCakes]);
-        increaseCount();
-        reward();
+		increaseCount();
+		reward();
 	};
 
 	const increaseCount = () => {
@@ -66,7 +65,7 @@ const App = () => {
 			return;
 		}
 
-        addCake();
+		addCake();
 	};
 
 	return (
@@ -74,9 +73,16 @@ const App = () => {
 			<div className="reward-container">
 				<button className="happy" onClick={handleClick} id="rewardId">
 					Happy Birthday
-					{name && <><br/>{name}</>}
+					{name && (
+						<>
+							<br />
+							{name}
+						</>
+					)}
 				</button>
-				<h2 ref={h2Ref}>{count < 2 ? 'Click the button!' : 'Keep Going!'}</h2>
+				<h2 ref={h2Ref}>
+					{count < 2 ? 'Click the button!' : 'Keep Going!'}
+				</h2>
 				<div className="cake">{cakes.join('')}</div>
 			</div>
 		</div>
