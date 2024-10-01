@@ -37,6 +37,12 @@ const App = () => {
 		if (queryParamName) {
 			setName(queryParamName);
 		}
+
+        const queryParamBd = getQueryParam('bd');
+		if (queryParamBd) {
+            const queryParamBdDecoded = atob(queryParamBd);
+			setName(queryParamBdDecoded);
+		}
 	}, []);
 
 	useEffect(() => {
