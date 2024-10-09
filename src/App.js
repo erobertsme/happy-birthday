@@ -20,7 +20,7 @@ for (let i = 0; i < 25; i++) {
 const App = () => {
     const [url, setUrl] = useState('aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t');
 	const [count, setCount] = useState(0);
-	const [cakes, setCakes] = useState([]);
+	const [cakes, setCakes] = useState('');
 	const [name, setName] = useState('');
 	const { reward } = useReward('rewardId', 'emoji', config);
 	const h2Ref = useRef(null);
@@ -72,15 +72,15 @@ const App = () => {
 
         bounceElement(h2Ref);
 	}, [count]);
+    
+    const increaseCount = () => {
+        setCount(prevCount => prevCount + 1);
+    };
 
 	const addCake = () => {
-		setCakes(prevCakes => ['🎂', ...prevCakes]);
+		setCakes(prevCakes => prevCakes + '🎂');
 		increaseCount();
 		reward();
-	};
-
-	const increaseCount = () => {
-		setCount(prevCount => prevCount + 1);
 	};
 
 	const handleClick = () => {
@@ -104,7 +104,7 @@ const App = () => {
 				<h2 ref={h2Ref}>
 					{count < 2 ? 'Click the button!' : 'Keep Going!'}
 				</h2>
-				<div className="cake">{cakes.join('')}</div>
+				<div className="cake">{cakes}</div>
 			</div>
 		</div>
 	);
