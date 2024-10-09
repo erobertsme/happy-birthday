@@ -56,7 +56,7 @@ const App = () => {
         const queryParamUrl = getQueryParam('rw');
         if (!queryParamUrl) return;
 
-        setUrl(queryParamUr));
+        setUrl(queryParamUrl);
     }
 
     // Setup page
