@@ -2,14 +2,13 @@ import './styles.css';
 import React, { useState, useEffect, useRef } from 'react';
 import { useReward } from 'react-rewards';
 
-const url = 'aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t';
-const totalClicks = 5;
+const maxClicks = 5;
 
 const config = {
 	emoji: ['🎈', '🎊', '🎉', '🎁', '⭐'],
 	elementCount: 100,
 	spread: 150,
-	zIndex: 9999,
+	zIndex: 42069,
 	lifetime: 300,
 };
 
@@ -19,53 +18,74 @@ for (let i = 0; i < 25; i++) {
 }
 
 const App = () => {
+    const [url, setUrl] = useState('aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t');
 	const [count, setCount] = useState(0);
 	const [cakes, setCakes] = useState([]);
 	const [name, setName] = useState('');
 	const { reward } = useReward('rewardId', 'emoji', config);
 	const h2Ref = useRef(null);
 
-	useEffect(() => {
-		addCake();
+    const bounceElement = ref => {
+        ref.current.classList.add('bounce');
+        setTimeout(() => {
+            ref.current.classList.remove('bounce');
+        }, 1000);
+    }
 
-		const getQueryParam = (name) => {
-			const urlParams = new URLSearchParams(window.location.search);
-			return urlParams.get(name);
-		};
+    const getQueryParam = name => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    };
 
+    const setBirthdayName = () => {
+        // Get name (plain text)
 		const queryParamName = getQueryParam('name');
 		if (queryParamName) {
 			setName(queryParamName);
 		}
 
+        // Get obfuscated name (base64 encoded)
         const queryParamBd = getQueryParam('bd');
 		if (queryParamBd) {
             const queryParamBdDecoded = atob(queryParamBd);
 			setName(queryParamBdDecoded);
 		}
+    }
+
+    // Get surprise URL
+    const getSurpriseUrl = () => {
+        const queryParamUrl = getQueryParam('rw');
+        if (!queryParamUrl) return;
+
+        setUrl(atob(queryParamUrl));
+    }
+
+    // Setup page
+	useEffect(() => {
+		addCake();
+		setBirthdayName();
+        getSurpriseUrl();
 	}, []);
 
+    // Animate "Click button"
 	useEffect(() => {
-		if (count > 1) {
-			h2Ref.current.classList.add('bounce');
-			setTimeout(() => {
-				h2Ref.current.classList.remove('bounce');
-			}, 1000);
-		}
+		if (count < 2) return;
+
+        bounceElement(h2Ref);
 	}, [count]);
 
 	const addCake = () => {
-		setCakes((prevCakes) => ['🎂', ...prevCakes]);
+		setCakes(prevCakes => ['🎂', ...prevCakes]);
 		increaseCount();
 		reward();
 	};
 
 	const increaseCount = () => {
-		setCount((prevCount) => prevCount + 1);
+		setCount(prevCount => prevCount + 1);
 	};
 
 	const handleClick = () => {
-		if (count > totalClicks - 1) {
+		if (count > maxClicks - 1) {
 			window.open(atob(url), '_blank');
 			setCount(0);
 			return;
@@ -79,12 +99,8 @@ const App = () => {
 			<div className="reward-container">
 				<button className="happy" onClick={handleClick} id="rewardId">
 					Happy Birthday
-					{name && (
-						<>
-							<br />
-							{name}
-						</>
-					)}
+                    <br />
+                    {name}
 				</button>
 				<h2 ref={h2Ref}>
 					{count < 2 ? 'Click the button!' : 'Keep Going!'}
