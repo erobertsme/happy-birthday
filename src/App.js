@@ -46,10 +46,9 @@ const App = () => {
 
         // Get obfuscated name (base64 encoded)
         const queryParamBd = getQueryParam('bd');
-		if (queryParamBd) {
-            const queryParamBdDecoded = atob(queryParamBd);
-			setName(queryParamBdDecoded);
-		}
+		if (!queryParamBd) return;
+
+        setName(atob(queryParamBd));
     }
 
     // Get surprise URL
@@ -57,7 +56,7 @@ const App = () => {
         const queryParamUrl = getQueryParam('rw');
         if (!queryParamUrl) return;
 
-        setUrl(atob(queryParamUrl));
+        setUrl(queryParamUr));
     }
 
     // Setup page
