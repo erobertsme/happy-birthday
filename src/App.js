@@ -40,23 +40,17 @@ const App = () => {
     const setBirthdayName = () => {
         // Get name (plain text)
 		const queryParamName = getQueryParam('name');
-		if (queryParamName) {
-			setName(queryParamName);
-		}
+		if (queryParamName) setName(queryParamName);
 
         // Get obfuscated name (base64 encoded)
         const queryParamBd = getQueryParam('bd');
-		if (!queryParamBd) return;
-
-        setName(atob(queryParamBd));
+		if (queryParamBd) setName( atob(queryParamBd) );
     }
 
-    // Get surprise URL
+    // Get surprise URL - must be base64 encoded
     const getSurpriseUrl = () => {
         const queryParamUrl = getQueryParam('rw');
-        if (!queryParamUrl) return;
-
-        setUrl(queryParamUrl);
+        if (queryParamUrl) setUrl(queryParamUrl);
     }
 
     // Setup page
@@ -68,9 +62,7 @@ const App = () => {
 
     // Animate "Click button"
 	useEffect(() => {
-		if (count < 2) return;
-
-        bounceElement(h2Ref);
+		if (count > 1) bounceElement(h2Ref);
 	}, [count]);
     
     const increaseCount = () => {
@@ -84,13 +76,11 @@ const App = () => {
 	};
 
 	const handleClick = () => {
-		if (count > maxClicks - 1) {
-			window.open(atob(url), '_blank');
-			setCount(0);
-			return;
-		}
+        if (count < maxClicks) return addCake();
 
-		addCake();
+        window.open(atob(url), '_blank');
+        setCount(1);
+        setCakes('🎂');
 	};
 
 	return (
