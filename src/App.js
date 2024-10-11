@@ -94,7 +94,7 @@ const App = () => {
 				<h2 ref={h2Ref}>
 					{count < 2 ? 'Click the button!' : 'Keep Going!'}
 				</h2>
-				<div className="cake">{cakes}</div>
+				<div className="cakes">{cakes}</div>
 			</div>
 		</div>
 	);
