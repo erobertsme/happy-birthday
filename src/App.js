@@ -18,56 +18,56 @@ for (let i = 0; i < 25; i++) {
 }
 
 const App = () => {
-    const [url, setUrl] = useState('aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t');
+	const [url, setUrl] = useState('aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t');
 	const [count, setCount] = useState(0);
 	const [cakes, setCakes] = useState('');
 	const [name, setName] = useState('');
 	const { reward } = useReward('rewardId', 'emoji', config);
 	const h2Ref = useRef(null);
 
-    const bounceElement = ref => {
-        ref.current.classList.add('bounce');
-        setTimeout(() => {
-            ref.current.classList.remove('bounce');
-        }, 1000);
-    }
+	const bounceElement = ref => {
+		ref.current.classList.add('bounce');
+		setTimeout(() => {
+			ref.current.classList.remove('bounce');
+		}, 1000);
+	}
 
-    const getQueryParam = name => {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    };
+	const getQueryParam = name => {
+		const urlParams = new URLSearchParams(window.location.search);
+		return urlParams.get(name);
+	};
 
-    const setBirthdayName = () => {
-        // Get name (plain text)
+	const setBirthdayName = () => {
+		// Get name (plain text)
 		const queryParamName = getQueryParam('name');
 		if (queryParamName) setName(queryParamName);
 
-        // Get obfuscated name (base64 encoded)
-        const queryParamBd = getQueryParam('bd');
+		// Get obfuscated name (base64 encoded)
+		const queryParamBd = getQueryParam('bd');
 		if (queryParamBd) setName( atob(queryParamBd) );
-    }
+	}
 
-    // Get surprise URL - must be base64 encoded
-    const getSurpriseUrl = () => {
-        const queryParamUrl = getQueryParam('rw');
-        if (queryParamUrl) setUrl(queryParamUrl);
-    }
+	// Get surprise URL - must be base64 encoded
+	const getSurpriseUrl = () => {
+		const queryParamUrl = getQueryParam('rw');
+		if (queryParamUrl) setUrl(queryParamUrl);
+	}
 
-    // Setup page
+	// Setup page
 	useEffect(() => {
 		addCake();
 		setBirthdayName();
-        getSurpriseUrl();
+		getSurpriseUrl();
 	}, []);
 
-    // Animate "Click button"
+	// Animate "Click button"
 	useEffect(() => {
 		if (count > 1) bounceElement(h2Ref);
 	}, [count]);
-    
-    const increaseCount = () => {
-        setCount(prevCount => prevCount + 1);
-    };
+	
+	const increaseCount = () => {
+		setCount(prevCount => prevCount + 1);
+	};
 
 	const addCake = () => {
 		setCakes(prevCakes => prevCakes + '🎂');
@@ -76,11 +76,11 @@ const App = () => {
 	};
 
 	const handleClick = () => {
-        if (count < maxClicks) return addCake();
+		if (count < maxClicks) return addCake();
 
-        window.open(atob(url), '_blank');
-        setCount(1);
-        setCakes('🎂');
+		window.open(atob(url), '_blank');
+		setCount(1);
+		setCakes('🎂');
 	};
 
 	return (
@@ -88,8 +88,8 @@ const App = () => {
 			<div className="reward-container">
 				<button className="happy" onClick={handleClick} id="rewardId">
 					Happy Birthday
-                    <br />
-                    {name}
+					<br />
+					{name}
 				</button>
 				<h2 ref={h2Ref}>
 					{count < 2 ? 'Click the button!' : 'Keep Going!'}
