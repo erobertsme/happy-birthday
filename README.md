@@ -22,3 +22,4 @@ https://birthday.tora.run/?m=2
 
 Todo:
 - Add "Share" button that generates a URL string to send to people.
+- Add param to customize emojis
