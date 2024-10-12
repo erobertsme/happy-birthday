@@ -98,7 +98,7 @@ const App = () => {
 					{name}
 				</button>
 				<h2 ref={h2Ref}>
-					{count < 2 ? 'Click the button!' : 'Keep Going!'}
+					{count < 2 ? 'Click the button ⤴' : 'Keep Going!'}
 				</h2>
 				<div className="cakes">{cakes}</div>
 			</div>
