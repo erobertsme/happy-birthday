@@ -15,5 +15,10 @@ https://birthday.tora.run/?bd=Rm9vIEJhciE
 https://birthday.tora.run/?rw=aHR0cHM6Ly9nb29nbGUuY29tL3NlYXJjaD9xPWRvJTIwYSUyMGJhcnJlbCUyMHJvbGw
 ```
 
+Max clicks can be set using the `m` query parameter
+```
+https://birthday.tora.run/?m=2
+```
+
 Todo:
 - Add "Share" button that generates a URL string to send to people.
