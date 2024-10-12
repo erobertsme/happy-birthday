@@ -1,6 +1,7 @@
 import './styles.css';
 import React, { useState, useEffect, useRef } from 'react';
 import { useReward } from 'react-rewards';
+import ShareButton from './ShareButton';
 
 const config = {
 	emoji: ['🎈', '🎊', '🎉', '🎁', '⭐'],
@@ -55,7 +56,7 @@ const App = () => {
     // Get max clicks
     const getMaxClicks = () => {
         const queryParamMaxClicks = getQueryParam('m');
-        if (queryParamMaxClicks) setMaxClicks(queryParamMaxClicks);
+        if (queryParamMaxClicks) setMaxClicks( atob(queryParamMaxClicks) );
     }
 
 	// Setup page
@@ -64,6 +65,7 @@ const App = () => {
 		setBirthdayName();
 		getSurpriseUrl();
         getMaxClicks();
+        console.log(count)
 	}, []);
 
 	// Animate "Click button"
@@ -101,6 +103,7 @@ const App = () => {
 					{count < 2 ? 'Click the button ⤴' : 'Keep Going!'}
 				</h2>
 				<div className="cakes">{cakes}</div>
+                <ShareButton />
 			</div>
 		</div>
 	);

@@ -73,10 +73,6 @@ body {
 	margin-top: 1rem;
 }
 
-.wrapper>div span {
-	pointer-events: none;
-}
-
 .happy span {
 	pointer-events: none;
 	position: absolute;
