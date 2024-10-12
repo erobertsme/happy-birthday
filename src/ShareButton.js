@@ -50,8 +50,7 @@ const ShareButton = () => {
 		// Generate the URL based on the form data
 		const baseURL = window.location.origin;
 		const queryString = [
-			formData.maxClicks &&
-				`m=${btoa(formData.maxClicks).replace(/=+$/, '')}`,
+			formData.maxClicks && formData.maxClicks !== 5 && `m=${btoa(formData.maxClicks).replace(/=+$/, '')}`,
 			formData.name && `bd=${btoa(formData.name).replace(/=+$/, '')}`,
 			formData.url && `rw=${btoa(formData.url).replace(/=+$/, '')}`,
 		]
