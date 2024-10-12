@@ -2,8 +2,6 @@ import './styles.css';
 import React, { useState, useEffect, useRef } from 'react';
 import { useReward } from 'react-rewards';
 
-const maxClicks = 5;
-
 const config = {
 	emoji: ['🎈', '🎊', '🎉', '🎁', '⭐'],
 	elementCount: 100,
@@ -20,6 +18,7 @@ for (let i = 0; i < 25; i++) {
 const App = () => {
 	const [url, setUrl] = useState('aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t');
 	const [count, setCount] = useState(0);
+    const [maxClicks, setMaxClicks] = useState(5);
 	const [cakes, setCakes] = useState('');
 	const [name, setName] = useState('');
 	const { reward } = useReward('rewardId', 'emoji', config);
@@ -53,11 +52,18 @@ const App = () => {
 		if (queryParamUrl) setUrl(queryParamUrl);
 	}
 
+    // Get max clicks
+    const getMaxClicks = () => {
+        const queryParamMaxClicks = getQueryParam('m');
+        if (queryParamMaxClicks) setMaxClicks(queryParamMaxClicks);
+    }
+
 	// Setup page
 	useEffect(() => {
 		addCake();
 		setBirthdayName();
 		getSurpriseUrl();
+        getMaxClicks();
 	}, []);
 
 	// Animate "Click button"
