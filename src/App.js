@@ -65,7 +65,6 @@ const App = () => {
 		setBirthdayName();
 		getSurpriseUrl();
         getMaxClicks();
-        console.log(count)
 	}, []);
 
 	// Animate "Click button"
