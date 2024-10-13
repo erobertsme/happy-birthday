@@ -56,7 +56,7 @@ const ShareButton = () => {
 		]
 			.filter(Boolean)
 			.join('&');
-		const generatedURL = `${baseURL}?${queryString}`;
+		const generatedURL = `${baseURL}/?${queryString}`;
 
 		setGeneratedURL(generatedURL);
 	};
