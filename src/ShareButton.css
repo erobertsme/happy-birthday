@@ -91,3 +91,13 @@
     color: #fff;
     margin-left: 10px;
 }
+
+@media (max-width: 600px) {
+ .share-button {
+  transform: unset;
+  top: 0px;
+  left: 0px;
+  bottom: unset;
+  right: unset;
+ }
+}
