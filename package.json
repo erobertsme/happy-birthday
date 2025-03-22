@@ -4,6 +4,7 @@
 	"description": "Happy Birthday message with a surprise",
 	"keywords": [],
 	"main": "src/index.js",
+    "license": "CC-BY-NC-SA-2.0",
 	"dependencies": {
 		"prop-types": ">=15.7.2",
 		"react": ">=17.0.2",

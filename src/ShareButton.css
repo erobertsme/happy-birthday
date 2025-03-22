@@ -70,7 +70,8 @@
     margin: 10px 0;
 }
 
-.modal-content input, .modal-content textarea {
+.modal-content input,
+.modal-content textarea {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
@@ -86,18 +87,19 @@
     cursor: pointer;
 }
 
-.modal-content button[type="button"], .modal-content button {
+.modal-content button[type="button"],
+.modal-content button {
     background-color: #f44336;
     color: #fff;
     margin-left: 10px;
 }
 
 @media (max-width: 600px) {
- .share-button {
-  transform: unset;
-  top: 0px;
-  left: 0px;
-  bottom: unset;
-  right: unset;
- }
+    .share-button {
+        transform: unset;
+        top: 0px;
+        left: 0px;
+        bottom: unset;
+        right: unset;
+    }
 }

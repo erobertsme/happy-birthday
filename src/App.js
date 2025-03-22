@@ -61,10 +61,10 @@ const App = () => {
 
 	// Setup page
 	useEffect(() => {
-		addCake();
-		setBirthdayName();
+        setBirthdayName();
 		getSurpriseUrl();
         getMaxClicks();
+		addCake();
 	}, []);
 
 	// Animate "Click button"
