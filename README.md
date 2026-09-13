@@ -1,24 +1,16 @@
-# A Happy Birthday suprise!
+# React + Vite
 
-Name can be set using the `name` query parameter
-```
-https://birthday.tora.run/?name=Foo%20Bar!
-```
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-Name can be set using base64 encoded string using the `bd` query parameter
-```
-https://birthday.tora.run/?bd=Rm9vIEJhciE
-```
+Currently, two official plugins are available:
 
-"Surprise" URL can be set using the `rw` query parameter
-```
-https://birthday.tora.run/?rw=aHR0cHM6Ly9nb29nbGUuY29tL3NlYXJjaD9xPWRvJTIwYSUyMGJhcnJlbCUyMHJvbGw
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Max clicks can be set using the `m` query parameter
-```
-https://birthday.tora.run/?m=2
-```
+## React Compiler
 
-Todo:
-- Add param to customize emojis
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
