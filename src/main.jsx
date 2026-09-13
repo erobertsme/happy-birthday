@@ -9,14 +9,14 @@ import App from './App.jsx'
 // supported and reflects the real visible height, so drive layout from it
 // instead of viewport units.
 const setViewportHeightVar = () => {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+	document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
 };
 setViewportHeightVar();
 window.addEventListener('resize', setViewportHeightVar);
 window.addEventListener('orientationchange', setViewportHeightVar);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+	<StrictMode>
+		<App />
+	</StrictMode>,
 )

@@ -6,7 +6,7 @@ const ShareButton = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [generatedURL, setGeneratedURL] = useState('');
 	const [isCopied, setIsCopied] = useState(false);
-    const modalRef = useRef(null);
+	const modalRef = useRef(null);
 	const [formData, setFormData] = useState({
 		name: '',
 		hideName: false,
@@ -24,15 +24,15 @@ const ShareButton = () => {
 		setIsCopied(false);
 	};
 
-    const handleBack = () => {
-        setGeneratedURL('');
-        setIsCopied(false);
-    };
+	const handleBack = () => {
+		setGeneratedURL('');
+		setIsCopied(false);
+	};
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
 			if (!modalRef.current || modalRef.current.contains(event.target)) return;
-            handleCloseModal();
+			handleCloseModal();
 		};
 
 		if (isModalOpen) document.addEventListener('mousedown', handleClickOutside);

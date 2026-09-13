@@ -24,7 +24,7 @@ const defaultUrl = atob('aHR0cHM6Ly90cnVzdG1ldGhpc2lzbm90YXNjYW0uY29t');
 const App = () => {
 	const [url, setUrl] = useState(defaultUrl);
 	const [currentClicks, setCurrentClicks] = useState(0);
-    const [maxClicks, setMaxClicks] = useState(5);
+	const [maxClicks, setMaxClicks] = useState(5);
 	const [cakes, setCakes] = useState('');
 	const [name, setName] = useState('');
 
@@ -66,7 +66,7 @@ const App = () => {
 
 	// Setup page
 	useEffect(() => {
-        setBirthdayName();
+		setBirthdayName();
 		applyShareOptions();
 		setCakes('🎂');
 	}, []);
@@ -97,7 +97,7 @@ const App = () => {
 					{currentClicks < 2 ? 'Click the button ⤴' : 'Keep Going!'}
 				</h2>
 				<div className="cakes">{cakes}</div>
-                <ShareButton />
+				<ShareButton />
 			</div>
 		</div>
 	);
