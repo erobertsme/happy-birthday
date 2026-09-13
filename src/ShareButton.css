@@ -1,37 +1,27 @@
 .share-button-corner {
-    --corner-size: clamp(100px, 24vw, 160px);
     position: fixed;
-    top: calc(var(--vh, 100vh) - var(--corner-size));
-    right: 0;
-    width: var(--corner-size);
-    height: var(--corner-size);
-    overflow: hidden;
+    bottom: 16px;
+    right: 16px;
     z-index: 69;
-    pointer-events: none;
 }
 
 .share-button {
-    position: absolute;
-    bottom: clamp(22px, 7vw, 38px);
-    right: clamp(-60px, -11vw, -52px);
-    width: clamp(150px, 36vw, 220px);
-    transform: rotate(-45deg);
     margin: 0;
     border: 0;
-    padding: clamp(8px, 2vw, 11px) 0;
+    padding: 12px 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
+    border-radius: 999px;
     background: linear-gradient(135deg, #ffffff, #f3e9ff);
     color: #3a2d7d;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-    font-size: clamp(12px, 3vw, 15px);
+    font-size: 14px;
     letter-spacing: 0.03em;
     box-shadow: 0 6px 18px rgba(35, 25, 90, 0.35);
     cursor: pointer;
-    pointer-events: auto;
     transition: background 200ms;
 }
 

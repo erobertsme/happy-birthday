@@ -54,7 +54,7 @@ body {
 
 .happy {
     color: white;
-    font-size: 5rem;
+    font-size: clamp(2rem, 11vw, 5rem);
     text-shadow: 0px 0px 6px hsl(32, 100%, 55%);
     -webkit-font-smoothing: antialiased;
     font-family: 'Pacifico', cursive;
@@ -78,7 +78,7 @@ body {
 }
 
 .cakes {
-    font-size: 5rem;
+    font-size: clamp(2rem, 11vw, 5rem);
     margin-top: 1rem;
 }
 
