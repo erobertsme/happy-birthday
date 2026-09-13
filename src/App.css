@@ -8,13 +8,13 @@
 
 html {
     max-width: 100vw;
-    max-height: 100dvh;
+    max-height: var(--vh, 100vh);
     overflow: hidden;
 }
 
 body {
     max-width: 100vw;
-    max-height: 100dvh;
+    max-height: var(--vh, 100vh);
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,7 +31,7 @@ body {
             rgb(187, 108, 184),
             rgb(196, 108, 176),
             rgb(206, 107, 168));
-    height: 100dvh;
+    height: var(--vh, 100vh);
     width: 100vw;
 }
 
@@ -39,7 +39,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
+    height: var(--vh, 100vh);
     text-align: center;
     position: relative;
 }
