@@ -1,10 +1,15 @@
 /* Corner ribbon share button, clipped so it can never overflow the viewport */
 .share-button-corner {
+    --corner-size: clamp(100px, 24vw, 160px);
     position: fixed;
-    bottom: 0;
+    /* Anchor to the small (guaranteed-visible) viewport instead of bottom: 0 —
+       browsers like Firefox for Android keep their own toolbar docked at the
+       bottom without shrinking position:fixed's containing block, so bottom: 0
+       renders underneath that toolbar and is never visible. */
+    top: calc(100svh - var(--corner-size));
     right: 0;
-    width: clamp(100px, 24vw, 160px);
-    height: clamp(100px, 24vw, 160px);
+    width: var(--corner-size);
+    height: var(--corner-size);
     overflow: hidden;
     z-index: 69;
     pointer-events: none;
@@ -13,7 +18,7 @@
 .share-button {
     position: absolute;
     bottom: clamp(22px, 7vw, 38px);
-    right: clamp(-52px, -11vw, -60px);
+    right: clamp(-60px, -11vw, -52px);
     width: clamp(150px, 36vw, 220px);
     transform: rotate(-45deg);
     margin: 0;
